@@ -20,7 +20,7 @@ pipeline {
 
         stage('docker build') {
                 steps {
-                        sh 'docker built -t 192.168.50.186:5000/calculator .'
+                        sh 'docker build -t 192.168.50.186:5000/calculator .'
                 }
         }
 
