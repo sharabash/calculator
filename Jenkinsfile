@@ -23,11 +23,13 @@ pipeline {
 			label 'vagrant'
 		}
 		steps {
-			sh 'whoami'
+			step {
+				sh 'whoami'
+			}
+			step {
+	                        sh 'docker build -t 192.168.50.186:5000/calculator .'
+			}
 		}
-                steps {
-                        sh 'docker build -t 192.168.50.186:5000/calculator .'
-                }
         }
 
     }
