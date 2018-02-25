@@ -31,5 +31,29 @@ pipeline {
 		}
         }
 
+	stage('deploy to staging') {
+	        agent {
+			node {
+				label 'vagrant'
+			}
+		}
+		steps {
+			sh 'docker container run -d --rm -p 8765:8080 --name calculator 192.168.50.186:5000/calculator'
+		}
+	}
+
+	stage('acceptance test') {
+	        agent {
+			node {
+				label 'vagrant'
+				customWorkspace '/var/lib/jenkins/workspace/2'
+			}
+		}
+		steps {
+			sleep 60
+			sh "./acceptance_test.sh"
+		}
+	}
+
     }
 }
