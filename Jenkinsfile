@@ -5,7 +5,6 @@ pipeline {
             // image '192.168.50.186:5000/jenkins-slave:latest'
         }
     }
-    agent any
     stages {
         stage('build') {
             steps {
@@ -20,7 +19,9 @@ pipeline {
         }
 
         stage('docker build') {
-	        agent 'vagrant'
+	        agent {
+			label 'vagrant'
+		}
                 steps {
                         sh 'docker build -t 192.168.50.186:5000/calculator .'
                 }
