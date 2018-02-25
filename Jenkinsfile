@@ -22,6 +22,9 @@ pipeline {
 	        agent {
 			label 'vagrant'
 		}
+		steps {
+			sh 'whoami'
+		}
                 steps {
                         sh 'docker build -t 192.168.50.186:5000/calculator .'
                 }
