@@ -21,6 +21,7 @@ pipeline {
         stage('docker build') {
 	        agent {
 			label 'vagrant'
+			customWorkspace '/var/lib/jenkins/workspace/2'
 		}
 		steps {
 			sh 'whoami'
